@@ -16,5 +16,10 @@ namespace DragonGame.GADE
         {
             InitializeComponent();
         }
+
+        private void opposingPlayer_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
