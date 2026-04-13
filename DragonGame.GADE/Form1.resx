@@ -117,4 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="dragonStats.Text" xml:space="preserve">
+    <value>Dragon Stats:
+Fire Dragon:
+20 HP
+5 Attack DMG
+12 Special Attack DMG
+4 Block
+
+Ice Dragon:
+30 HP
+4 Attack DMG
+9 Special Attack DMG
+5 Block
+
+Wind Dragon:
+40 HP
+3 Attack DMG
+7 Special Attack DMG
+5 Block
+
+Earth Dragon:
+50 HP
+2 Attack DMG
+5 Special Attack DMG
+6 Block</value>
+  </data>
 </root>
