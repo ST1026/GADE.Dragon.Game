@@ -63,7 +63,7 @@ namespace DragonGame.GADE
 
             Player starter = (currentplayer == 1) ? player1 : player2;
             LogAction($"{starter.playerName} wins the roll and goes first");
-            
+
             UpdategameForm(currentplayer);
 
         }
@@ -79,6 +79,8 @@ namespace DragonGame.GADE
             this.player1 = player1;
             this.player2 = player2;
             this.currentplayer = 1; //assumption that player 1 starts
+
+            RefreshUI();
         }
 
 
@@ -101,7 +103,7 @@ namespace DragonGame.GADE
         }
         private void LoadTurn(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -119,11 +121,22 @@ namespace DragonGame.GADE
 
         }
 
-
-        private void opposingPlayer_Enter(object sender, EventArgs e)
+        private void RefreshUI()
         {
+            //identify players
+            Player active = (currentplayer == 1) ? player1 : player2;
+            Player oppo = (currentplayer == 1) ? player2 : player1;
 
+            //Update UI at once
+            turnplayerBox.Text = active.dragonName;
+            opposingPlayer.Text = oppo.dragonName;
+            oppPlayertxt.Text = oppo.playerName;
+
+            //simple health display
+            hptxtbox1.Text = $"HP: {active.Health}";
+            hptxtbox2.Text = $"HP: {oppo.Health}";
         }
+
 
         public void Attack(Player playerATK, Player playerDEF)
         {
@@ -172,8 +185,8 @@ namespace DragonGame.GADE
 
             if (action == "Block")
             {
-               Block(cPlayer);
-               LogAction($"{cPlayer.dragonName} blocks the attack!");
+                Block(cPlayer);
+                LogAction($"{cPlayer.dragonName} blocks the attack!");
             }
             else if (action == "Attack")
             {
@@ -202,6 +215,7 @@ namespace DragonGame.GADE
                 oPlayer.isBlocking = false;
             }
             SwitchTurns();
+            RefreshUI();
         }
 
         public void SwitchTurns()
@@ -215,13 +229,9 @@ namespace DragonGame.GADE
             UpdategameForm(currentplayer);
         }
 
-        private void oppPlayertxt_Click(object sender, EventArgs e)
-        {
-
-        }
 
         //setting up text in battle log
-        private void LogAction (string battlelog)
+        private void LogAction(string battlelog)
         {
             //appends text and adds a new line
             richTextBox1.AppendText($"{battlelog}{Environment.NewLine}");
@@ -232,7 +242,29 @@ namespace DragonGame.GADE
 
         }
 
+
         private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void turnplayerBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private void oppPlayertxt_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void opposingPlayer_Enter(object sender, EventArgs e)
+        {
+
+        }
+        private void hptxtbox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void hptxtbox2_TextChanged(object sender, EventArgs e)
         {
 
         }

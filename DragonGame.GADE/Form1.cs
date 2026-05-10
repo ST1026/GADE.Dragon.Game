@@ -104,6 +104,8 @@ namespace DragonGame.GADE
         {
             Form2 gameForm = new Form2(player1, player2);
             gameForm.Show();
+            string dragonType1 = dragonBox.Text;
+            string dragonType2 = dragonBox2.Text;
             this.Hide();
         }
 
@@ -124,7 +126,7 @@ namespace DragonGame.GADE
 
         private void CollectedData(string playerName, string dragonName, string dragonType, out Player player)
         {
-            int HP = 0, ATK = 0, SpATK = 0, BLK = 0;
+            int HP = 20, ATK = 1, SpATK = 1, BLK = 1;
 
             switch (dragonType)
             {
