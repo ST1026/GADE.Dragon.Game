@@ -82,6 +82,7 @@
             savePlayer1.TabIndex = 5;
             savePlayer1.Text = "Save";
             savePlayer1.UseVisualStyleBackColor = true;
+            savePlayer1.Click += savePlayer1_Click;
             // 
             // dragonBox
             // 
@@ -154,6 +155,7 @@
             player1Name.Name = "player1Name";
             player1Name.Size = new Size(197, 23);
             player1Name.TabIndex = 2;
+            player1Name.TextChanged += player1Name_TextChanged;
             // 
             // label2
             // 
@@ -196,6 +198,7 @@
             savePlayer2.TabIndex = 5;
             savePlayer2.Text = "Save";
             savePlayer2.UseVisualStyleBackColor = true;
+            savePlayer2.Click += savePlayer2_Click;
             // 
             // dragonBox2
             // 
@@ -260,6 +263,7 @@
             dragon2Name.Name = "dragon2Name";
             dragon2Name.Size = new Size(195, 23);
             dragon2Name.TabIndex = 3;
+            dragon2Name.TextChanged += dragon2Name_TextChanged;
             // 
             // player2Name
             // 
@@ -267,6 +271,7 @@
             player2Name.Name = "player2Name";
             player2Name.Size = new Size(195, 23);
             player2Name.TabIndex = 2;
+            player2Name.TextChanged += player2Name_TextChanged;
             // 
             // label4
             // 
@@ -294,6 +299,7 @@
             startGame.TabIndex = 2;
             startGame.Text = "Start Game";
             startGame.UseVisualStyleBackColor = true;
+            startGame.Click += startGame_Click;
             // 
             // dragonStats
             // 
@@ -315,6 +321,7 @@
             Controls.Add(player1Info);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             player1Info.ResumeLayout(false);
             player1Info.PerformLayout();
             dragonBox.ResumeLayout(false);

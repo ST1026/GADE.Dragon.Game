@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             turnplayerBox = new GroupBox();
+            blkButton = new Button();
+            satkButton = new Button();
+            atkButton = new Button();
+            hpTxt1 = new Label();
             opposingPlayer = new GroupBox();
+            oppPlayertxt = new Label();
             battleLog = new GroupBox();
             richTextBox1 = new RichTextBox();
-            hpTxt1 = new Label();
-            atkButton = new Button();
-            satkButton = new Button();
-            blkButton = new Button();
-            oppPlayertxt = new Label();
+            hpTxt2 = new Label();
             turnplayerBox.SuspendLayout();
             opposingPlayer.SuspendLayout();
             battleLog.SuspendLayout();
@@ -55,16 +56,68 @@
             turnplayerBox.TabStop = false;
             turnplayerBox.Text = "Player's Dragon's Turn";
             // 
+            // blkButton
+            // 
+            blkButton.Location = new Point(9, 156);
+            blkButton.Name = "blkButton";
+            blkButton.Size = new Size(191, 41);
+            blkButton.TabIndex = 3;
+            blkButton.Text = "Block";
+            blkButton.UseVisualStyleBackColor = true;
+            blkButton.Click += blkButton_Click;
+            // 
+            // satkButton
+            // 
+            satkButton.Location = new Point(9, 109);
+            satkButton.Name = "satkButton";
+            satkButton.Size = new Size(191, 41);
+            satkButton.TabIndex = 2;
+            satkButton.Text = "Special Attack";
+            satkButton.UseVisualStyleBackColor = true;
+            satkButton.Click += satkButton_Click;
+            // 
+            // atkButton
+            // 
+            atkButton.Location = new Point(9, 62);
+            atkButton.Name = "atkButton";
+            atkButton.Size = new Size(191, 41);
+            atkButton.TabIndex = 1;
+            atkButton.Text = "Attack";
+            atkButton.UseVisualStyleBackColor = true;
+            atkButton.Click += atkButton_Click;
+            // 
+            // hpTxt1
+            // 
+            hpTxt1.AutoSize = true;
+            hpTxt1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            hpTxt1.Location = new Point(52, 19);
+            hpTxt1.Name = "hpTxt1";
+            hpTxt1.Size = new Size(90, 40);
+            hpTxt1.TabIndex = 0;
+            hpTxt1.Text = "HP: 0";
+            // 
             // opposingPlayer
             // 
+            opposingPlayer.Controls.Add(hpTxt2);
             opposingPlayer.Controls.Add(oppPlayertxt);
-            opposingPlayer.Location = new Point(265, 74);
+            opposingPlayer.Location = new Point(265, 55);
             opposingPlayer.Name = "opposingPlayer";
-            opposingPlayer.Size = new Size(262, 100);
+            opposingPlayer.Size = new Size(262, 119);
             opposingPlayer.TabIndex = 1;
             opposingPlayer.TabStop = false;
             opposingPlayer.Text = "Opponent: Opposing Player";
             opposingPlayer.Enter += opposingPlayer_Enter;
+            // 
+            // oppPlayertxt
+            // 
+            oppPlayertxt.AutoSize = true;
+            oppPlayertxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            oppPlayertxt.Location = new Point(32, 24);
+            oppPlayertxt.Name = "oppPlayertxt";
+            oppPlayertxt.Size = new Size(201, 25);
+            oppPlayertxt.TabIndex = 0;
+            oppPlayertxt.Text = "Opp Player's Dragon:";
+            oppPlayertxt.Click += oppPlayertxt_Click;
             // 
             // battleLog
             // 
@@ -83,53 +136,17 @@
             richTextBox1.Size = new Size(503, 135);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
+            richTextBox1.TextChanged += richTextBox1_TextChanged;
             // 
-            // hpTxt1
+            // hpTxt2
             // 
-            hpTxt1.AutoSize = true;
-            hpTxt1.Font = new Font("Segoe UI", 21.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            hpTxt1.Location = new Point(52, 19);
-            hpTxt1.Name = "hpTxt1";
-            hpTxt1.Size = new Size(107, 40);
-            hpTxt1.TabIndex = 0;
-            hpTxt1.Text = "HP: 15";
-            // 
-            // atkButton
-            // 
-            atkButton.Location = new Point(9, 62);
-            atkButton.Name = "atkButton";
-            atkButton.Size = new Size(191, 41);
-            atkButton.TabIndex = 1;
-            atkButton.Text = "Attack";
-            atkButton.UseVisualStyleBackColor = true;
-            // 
-            // satkButton
-            // 
-            satkButton.Location = new Point(9, 109);
-            satkButton.Name = "satkButton";
-            satkButton.Size = new Size(191, 41);
-            satkButton.TabIndex = 2;
-            satkButton.Text = "Special Attack";
-            satkButton.UseVisualStyleBackColor = true;
-            // 
-            // blkButton
-            // 
-            blkButton.Location = new Point(9, 156);
-            blkButton.Name = "blkButton";
-            blkButton.Size = new Size(191, 41);
-            blkButton.TabIndex = 3;
-            blkButton.Text = "Block";
-            blkButton.UseVisualStyleBackColor = true;
-            // 
-            // oppPlayertxt
-            // 
-            oppPlayertxt.AutoSize = true;
-            oppPlayertxt.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            oppPlayertxt.Location = new Point(35, 36);
-            oppPlayertxt.Name = "oppPlayertxt";
-            oppPlayertxt.Size = new Size(201, 25);
-            oppPlayertxt.TabIndex = 0;
-            oppPlayertxt.Text = "Opp Player's Dragon:";
+            hpTxt2.AutoSize = true;
+            hpTxt2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            hpTxt2.Location = new Point(88, 65);
+            hpTxt2.Name = "hpTxt2";
+            hpTxt2.Size = new Size(75, 32);
+            hpTxt2.TabIndex = 1;
+            hpTxt2.Text = "HP: 0";
             // 
             // Form2
             // 
@@ -141,6 +158,7 @@
             Controls.Add(turnplayerBox);
             Name = "Form2";
             Text = "Form2";
+            Load += Form2_Load;
             turnplayerBox.ResumeLayout(false);
             turnplayerBox.PerformLayout();
             opposingPlayer.ResumeLayout(false);
@@ -160,5 +178,6 @@
         private Button atkButton;
         private Label hpTxt1;
         private Label oppPlayertxt;
+        private Label hpTxt2;
     }
 }
