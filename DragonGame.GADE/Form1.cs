@@ -126,6 +126,8 @@ namespace DragonGame.GADE
 
         private void CollectedData(string playerName, string dragonName, string dragonType, out Player player)
         {
+            //stats system still need some soring out but for the most part it works
+
             int HP = 20, ATK = 1, SpATK = 3, BLK = 1;
 
             switch (dragonType)
