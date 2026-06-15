@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DragonGame.GADE")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+313c45101e4799aac8c38d9552dd824d6c225429")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e621a6bde9ee24af27256fadeffb7dfc1caaef13")]
 [assembly: System.Reflection.AssemblyProductAttribute("DragonGame.GADE")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DragonGame.GADE")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

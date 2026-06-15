@@ -13,6 +13,7 @@ namespace DragonGame.GADE
     public partial class Form2 : Form
     {
         Random round = new Random();
+        private bool FirstRoundOver = false;
 
         public class Player
         {
@@ -24,6 +25,7 @@ namespace DragonGame.GADE
             public int Attack { get; set; }
             public int SpecialA { get; set; }
             public int Block { get; set; }
+
             public bool isBlocking;
 
             public Player(string name, string dragname, string dragtype, int health, int attack, int specialAtk, int block)
@@ -63,6 +65,8 @@ namespace DragonGame.GADE
 
             Player starter = (currentplayer == 1) ? player1 : player2;
             LogAction($"{starter.playerName} wins the roll and goes first");
+
+            RerollInitiative();
 
             UpdategameForm(currentplayer);
 
@@ -177,6 +181,14 @@ namespace DragonGame.GADE
             TurnAction("Block");
         }
 
+        private void restButton_Click(object sender, EventArgs e)
+        {
+            //identify player/dragon to rest
+            Player attacker = (currentplayer == 1) ? player1 : player2;
+
+            //Excecute Rest Logic
+            Rest(attacker);
+        }
         //handle turn switching between the players
         public void TurnAction(string action)
         {
@@ -213,21 +225,95 @@ namespace DragonGame.GADE
                     LogAction($"BOOM!! {cPlayer.dragonName} lands an amazing Special Attack on {oPlayer.dragonName}!");
                 }
                 oPlayer.isBlocking = false;
+
+                //SATK CoolDown: Hide Action buttons
+                atkButton.Visible = false;
+                satkButton.Visible = false;
+                blkButton.Visible = false;
+
+                //reveal rest button on top
+                restButton.Visible = true;
+
+
             }
-            SwitchTurns();
+            if (!CheckForWin())
+            {
+                SwitchTurns(); //switch between players or trigger reroll
+            }
             RefreshUI();
+        }
+
+        private void Rest(Player restedDragon)
+        {
+            
+            restedDragon.isBlocking = false;
+
+            //log rest action taken by dragon
+            LogAction($"{restedDragon.dragonName} takes a rest to recover after the special attack!");
+
+            //swap button layout back to normal
+            restButton.Visible = false;
+
+            atkButton.Visible = true;
+            satkButton.Visible = true;
+            blkButton.Visible = true;
+
+            //conclude rest and resume normal game
+            if(!CheckForWin())
+            {
+                SwitchTurns();
+            }
+
         }
 
         public void SwitchTurns()
         {
-            //current player's turn toggled
-            currentplayer = (currentplayer == 1) ? 2 : 1;
+            if (!FirstRoundOver)
+            {
+                //current player's turn toggled
+                currentplayer = (currentplayer == 1) ? 2 : 1;
+                FirstRoundOver = true;
 
-            Player nextPlayer = (currentplayer == 1) ? player1 : player2;
-            nextPlayer.isBlocking = false;
+                LogAction("---------------------------------");
+                Player nextPlayer = (currentplayer == 1) ? player1 : player2;
+                LogAction($"It is now {nextPlayer.playerName}'s turn");
+
+                //reset block status for next player's turn
+                nextPlayer.isBlocking = false;
+                RefreshUI();
+            }
+            else
+            {
+                LogAction("-----------------------------------------");
+                LogAction("Round 1 Over. Re-Rolling Initiative for next round");
+
+                //reset round tracker
+                FirstRoundOver = false;
+
+                //Trigger ReRoll for initiative
+                RerollInitiative();
+            }
+
 
             UpdategameForm(currentplayer);
         }
+
+        private void RerollInitiative()
+        {
+            int firstP = TakeInitiative();
+            currentplayer = firstP;
+
+            Player starter = (currentplayer == 1) ? player1 : player2;
+
+            LogAction($"Dice Rolled! {starter.playerName} and {starter.dragonName} get initiative!");
+            LogAction("--------------------------------------------");
+
+            starter.isBlocking = false;
+
+            RefreshUI();
+        }
+
+
 
 
         //setting up text in battle log
@@ -240,6 +326,38 @@ namespace DragonGame.GADE
             richTextBox1.SelectionStart = richTextBox1.Text.Length;
             richTextBox1.ScrollToCaret();
 
+        }
+        private bool CheckForWin()
+        {
+            if (player1.Health <= 0)
+            {
+                LogAction("---------------------------------------");
+                LogAction($"GAME OVER: {player1.dragonName} has been defeated!");
+                LogAction($"{player2.dragonName} WINS THE BATTLE!");
+                return true;
+                DisableButtons();
+            }
+            if (player2.Health <= 0)
+            {
+                LogAction("----------------------------------------");
+                LogAction($"GAME OVER: {player2.dragonName} has lost the batte!");
+                LogAction($"{player1.dragonName} IS THE WINNER!");
+                return true;
+                DisableButtons();
+            }
+            return false;
+        }
+
+        private void DisableButtons()
+        {
+            atkButton.Enabled = false;
+            atkButton.Visible = false;
+
+            satkButton.Enabled = false;
+            satkButton.Visible = false;
+
+            blkButton.Enabled = false;
+            blkButton.Visible = false;
         }
 
 
@@ -268,5 +386,11 @@ namespace DragonGame.GADE
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

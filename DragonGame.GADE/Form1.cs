@@ -69,14 +69,20 @@ namespace DragonGame.GADE
             //collected data from Player 1
             string playerName = player1Name.Text;
             string dragonName = dragon1Name.Text;
-            string dragonType = dragonBox.Text;
+            string dragonType = SelectedDragon1();
+
+            if (string.IsNullOrEmpty(dragonType) || dragonType == "Dragon Type")
+            {
+                MessageBox.Show("Please select a dragon from the list");
+                return;
+            }
 
             //save Player1's values
             CollectedData(playerName, dragonName, dragonType, out player1);
             savePlayer1.Enabled = false;
 
             //check if both players have saved before game starts
-            if(!savePlayer1.Enabled && !savePlayer2.Enabled)
+            if (!savePlayer1.Enabled && !savePlayer2.Enabled)
             {
                 startGame.Enabled = true;
             }
@@ -87,7 +93,7 @@ namespace DragonGame.GADE
             //collected data from P2
             string playerName = player2Name.Text;
             string dragonName = dragon2Name.Text;
-            string dragonType = dragonBox2.Text;
+            string dragonType = SelectedDragon2();
 
             //Save P2 Values
             CollectedData(playerName, dragonName, dragonType, out player2);
@@ -130,7 +136,9 @@ namespace DragonGame.GADE
 
             int HP = 20, ATK = 1, SpATK = 3, BLK = 1;
 
-            switch (dragonType)
+            string CdragonType = dragonType.Trim();
+
+            switch (CdragonType)
             {
                 case iceDName:
                     HP = iceDHp;
@@ -159,13 +167,65 @@ namespace DragonGame.GADE
                     SpATK = windDSAttack;
                     BLK = windDBLK;
                     break;
+
+                default:
+                    MessageBox.Show($"Error: Dragon Type did not match constants. The game read your selection as: '{CdragonType}'");
+                    HP = 100; //Give dragon(s) 100 hp in case switch fails
+                    break;
             }
-            player = new Player(playerName, dragonName, dragonType, HP, ATK, SpATK, BLK);
+
+
+
+            player = new Player(playerName, dragonName, CdragonType, HP, ATK, SpATK, BLK);
 
         }
 
 
+        private string SelectedDragon1()
+        {
+            if (fireDragon.Checked) return fireDName; //return Fire Dragon
+            if (iceDragon.Checked) return iceDName; //return Ice Dragon
+            if (windDragon.Checked) return windDName; //return Wind Dragon
+            if (earthDragon.Checked) return earthDName; //return Earth Dragon
+
+            return ""; //if nothing is selected
+        }
+
+        private string SelectedDragon2()
+        {
+            if (fireDragon2.Checked) return fireDName;
+            if (iceDragon2.Checked) return iceDName;
+            if (windDragon2.Checked) return windDName;
+            if (earthDragon2.Checked) return earthDName;
+
+            return "";
+        }
 
 
+
+        private void dragonBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fireDragon_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iceDragon_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void windDragon_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void earthDragon_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

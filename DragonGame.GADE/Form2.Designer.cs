@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             turnplayerBox = new GroupBox();
+            restButton = new Button();
             hptxtbox1 = new RichTextBox();
             blkButton = new Button();
             satkButton = new Button();
@@ -45,6 +46,7 @@
             // 
             // turnplayerBox
             // 
+            turnplayerBox.Controls.Add(restButton);
             turnplayerBox.Controls.Add(hptxtbox1);
             turnplayerBox.Controls.Add(blkButton);
             turnplayerBox.Controls.Add(satkButton);
@@ -56,6 +58,17 @@
             turnplayerBox.TabStop = false;
             turnplayerBox.Text = "Player's Dragon's Turn";
             turnplayerBox.Enter += turnplayerBox_Enter;
+            // 
+            // restButton
+            // 
+            restButton.Location = new Point(9, 74);
+            restButton.Name = "restButton";
+            restButton.Size = new Size(197, 140);
+            restButton.TabIndex = 5;
+            restButton.Text = "Rest";
+            restButton.UseVisualStyleBackColor = true;
+            restButton.Visible = false;
+            restButton.Click += restButton_Click;
             // 
             // hptxtbox1
             // 
@@ -180,5 +193,6 @@
         private Label oppPlayertxt;
         private RichTextBox hptxtbox1;
         private RichTextBox hptxtbox2;
+        private Button restButton;
     }
 }

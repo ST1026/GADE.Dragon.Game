@@ -96,6 +96,7 @@
             dragonBox.TabIndex = 4;
             dragonBox.TabStop = false;
             dragonBox.Text = "Dragon Type";
+            dragonBox.Enter += dragonBox_Enter;
             // 
             // earthDragon
             // 
@@ -107,6 +108,7 @@
             earthDragon.TabStop = true;
             earthDragon.Text = "Earth Dragon";
             earthDragon.UseVisualStyleBackColor = true;
+            earthDragon.CheckedChanged += earthDragon_CheckedChanged;
             // 
             // windDragon
             // 
@@ -118,6 +120,7 @@
             windDragon.TabStop = true;
             windDragon.Text = "Wind Dragon";
             windDragon.UseVisualStyleBackColor = true;
+            windDragon.CheckedChanged += windDragon_CheckedChanged;
             // 
             // fireDragon
             // 
@@ -129,6 +132,7 @@
             fireDragon.TabStop = true;
             fireDragon.Text = "Fire Dragon";
             fireDragon.UseVisualStyleBackColor = true;
+            fireDragon.CheckedChanged += fireDragon_CheckedChanged;
             // 
             // iceDragon
             // 
@@ -140,6 +144,7 @@
             iceDragon.TabStop = true;
             iceDragon.Text = "Ice Dragon";
             iceDragon.UseVisualStyleBackColor = true;
+            iceDragon.CheckedChanged += iceDragon_CheckedChanged;
             // 
             // dragon1Name
             // 
