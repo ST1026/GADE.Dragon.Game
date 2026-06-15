@@ -334,30 +334,25 @@ namespace DragonGame.GADE
                 LogAction("---------------------------------------");
                 LogAction($"GAME OVER: {player1.dragonName} has been defeated!");
                 LogAction($"{player2.dragonName} WINS THE BATTLE!");
-                return true;
                 DisableButtons();
+                return true;
             }
             if (player2.Health <= 0)
             {
                 LogAction("----------------------------------------");
                 LogAction($"GAME OVER: {player2.dragonName} has lost the batte!");
                 LogAction($"{player1.dragonName} IS THE WINNER!");
-                return true;
                 DisableButtons();
+                return true;
             }
             return false;
         }
 
-        private void DisableButtons()
+        public void DisableButtons()
         {
             atkButton.Enabled = false;
-            atkButton.Visible = false;
-
             satkButton.Enabled = false;
-            satkButton.Visible = false;
-
             blkButton.Enabled = false;
-            blkButton.Visible = false;
         }
 
 
