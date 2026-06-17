@@ -12,6 +12,12 @@ namespace DragonGame.GADE
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new SplashScreen());
+
+            Form1 setupForm = new Form1();
+            Application.Run(setupForm);
+
+            
+            Application.Run(new Form2(setupForm.player1, setupForm.player2));
         }
     }
 }

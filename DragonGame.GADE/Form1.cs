@@ -3,8 +3,8 @@ namespace DragonGame.GADE
 {
     public partial class Form1 : Form
     {
-        Player player1;
-        Player player2;
+        public Player player1;
+        public Player player2;
 
         string[] dataP1 = new string[3]; //Player1 name, Dragon1 Name, Dragon1 Type
         int[] valuesP1 = new int[4]; //Health, Attack, Special Attack, and Block Stats
@@ -112,7 +112,7 @@ namespace DragonGame.GADE
             gameForm.Show();
             string dragonType1 = dragonBox.Text;
             string dragonType2 = dragonBox2.Text;
-            this.Hide();
+            this.Close();
         }
 
         private void player1Name_TextChanged(object sender, EventArgs e)

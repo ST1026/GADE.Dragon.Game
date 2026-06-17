@@ -26,7 +26,7 @@ namespace DragonGame.GADE
         {
             timer1.Enabled = false;
 
-            this.Hide();
+            this.Close();
 
             Form1 setupForm = new Form1();
             setupForm.ShowDialog();
