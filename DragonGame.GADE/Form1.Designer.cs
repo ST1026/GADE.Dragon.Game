@@ -272,6 +272,7 @@
             // 
             // player2Name
             // 
+            player2Name.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             player2Name.Location = new Point(101, 24);
             player2Name.Name = "player2Name";
             player2Name.Size = new Size(195, 23);
@@ -325,6 +326,7 @@
             Controls.Add(player2Info);
             Controls.Add(player1Info);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
             player1Info.ResumeLayout(false);

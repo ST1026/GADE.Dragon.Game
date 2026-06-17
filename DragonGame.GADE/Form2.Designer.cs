@@ -172,6 +172,7 @@
             Controls.Add(opposingPlayer);
             Controls.Add(turnplayerBox);
             Name = "Form2";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";
             Load += Form2_Load;
             turnplayerBox.ResumeLayout(false);
